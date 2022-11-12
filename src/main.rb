@@ -3,18 +3,18 @@ module Screen
     PRODUCTS = 1
     SUBTOTAL = 2
     EXIT = 3
+
+    MAIN_PAGE_OPTIONS = [
+        { label: "Comprar", value: Screen::PRODUCTS },
+        { label: "Sair", value: Screen::EXIT }
+    ]
+    
+    PRODUCTS_PAGE_OPTIONS = [
+        { label: "Notebook: R$ 4999,99", value: 4999.99 },
+        { label: "Pendrive: R$ 50,50", value: 50.50 },
+        { label: "Teclado Mecânico: R$ 500,45", value: 500.45 },
+    ]
 end
-
-MAIN_PAGE_OPTIONS = [
-    { label: "Comprar", value: Screen::PRODUCTS },
-    { label: "Sair", value: Screen::EXIT }
-]
-
-PRODUCTS_PAGE_OPTIONS = [
-    { label: "Notebook: R$ 4999,99", value: 4999.99 },
-    { label: "Pendrive: R$ 50,50", value: 50.50 },
-    { label: "Teclado Mecânico: R$ 500,45", value: 500.45 },
-]
 
 def select_list(text,options)
     options.each_with_index do |option, index|
@@ -33,12 +33,12 @@ end
 
 def main_page
     text = "Selecione a opção desejada: "
-    next_page = select_list(text, MAIN_PAGE_OPTIONS)
+    next_page = select_list(text, Screen::MAIN_PAGE_OPTIONS)
 end
 
 def products_page
     text = "Selecione a opção desejada: "
-    product_value = select_list(text, PRODUCTS_PAGE_OPTIONS)
+    product_value = select_list(text, Screen::PRODUCTS_PAGE_OPTIONS)
 
     print "Digite a quantidade desejada: "
     quantity = gets.chomp.to_i
